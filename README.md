@@ -12,7 +12,7 @@ Coding from scratch something that is readily available in a popular and easily 
 
 ## About the Data
 
-Since the focus of this project is to enahnce my Machine Learning knowledge building models from scratch (rather than analyzing a specific real-world issue), we will for the most part use the toy datasets contained in the `sklearn.datasets` module. The only exception are the Naive Bayes notebook (where we use a collection of 5,572 SMS which is available [here](https://archive.ics.uci.edu/ml/datasets/sms+spam+collection)) and the k-Means Clustering notebook (where we use data from the videogame FIFA 22 that can be found [here](https://www.kaggle.com/datasets/stefanoleone992/fifa-22-complete-player-dataset)).  
+Since the focus of this project is to enahnce my Machine Learning knowledge by building models from scratch (rather than analyzing a specific real-world issue), we will for the most part use the toy datasets contained in the `sklearn.datasets` module. The only exception are the Naive Bayes notebook (where we use a collection of 5,572 SMS which is available [here](https://archive.ics.uci.edu/ml/datasets/sms+spam+collection)) and the k-Means Clustering notebook (where we use data from the videogame FIFA 22 that can be found [here](https://www.kaggle.com/datasets/stefanoleone992/fifa-22-complete-player-dataset)).  
 
 ## Notebooks Overview
 

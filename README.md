@@ -1,34 +1,24 @@
-![Cover](images/cover_image.png)
-
-# Building a Spam Filter with Naive Bayes
+# Machine Learning from Scratch
 
 ## Project Description
 
-The goal of this project is to build a tool to classify text messages as spam or not spam. We do this by implementing from the ground up the multinomial naive Bayes algorithm (with Laplace smoothing). This means that, rather than fitting an instance of the `MultinomialNB()` class contained in the `sklearn.naive_bayes` module, we bother to go through all the steps of the algorithm and to explicitly compute all the constants and parameters it requires.
+In this project we build many different Machine Learning models from scratch. This means that, rather than using the instances provided by the scikit-learn library, we build the models from the ground up, manufacturing ourselves all tools we need. More specifically, for each model we first present a detailed pseudo code of the algorithm that implements it; then we proceed to code each step separately. Once the model is ready, we evaluate its performance using different hyperparameters values; finally, we compare our model to the reference implementation from scikit-learn: in each case both objects yield the same results.
 
-The silver lining of this approach is that, by the time the reader has covered the entire notebook, it will have a clear understanding of how the multinomial naive Bayes algorithm actually works, the math and probability theory that lies behind it and how all this can be used concretely to classify text messages.    
+It's important to keep in mind that obtaining small errors and optimal model performances is not the main goal of this project. Hence, some tasks that usually make up an important part of the Machine Learning pipeline (like data visualization and feature selection) are here either overlooked or completely ignored.  
+
+## Project Motivation
+
+Coding from scratch something that is readily available in a popular and easily accessible library like scikit-learn might seem like a tedious and arid exercise. However, the silver lining of this approach is that, by reviewing and putting into action each step of the algorithm, one achieves a clear, intimate understanding of how the related model really works. Moreover, having the entire source code availabe allows higher levels of model customization.
 
 ## About the Data
 
-In order to train and test the naive Bayes classifier we intend to build, we use a dataset of 5,572 SMS that have already been classified by humans. This dataset was put together by Tiago A. Almeida and José María Gómez Hidalgo and is publicly hosted by the [UCI Machine Learning repository](https://archive.ics.uci.edu/ml/datasets/sms+spam+collection). On this page the reader can find more information about the criteria used to collect this corpus of texts together with references to some of the authors' papers where this data has been used.
+Since the focus of this project is to enahnce my Machine Learning knowledge building models from scratch (rather than analyzing a specific real-world issue), we will for the most part use the toy datasets contained in the `sklearn.datasets` module. The only exception are the Naive Bayes notebook (where we use a collection of 5,572 SMS which is available [here](https://archive.ics.uci.edu/ml/datasets/sms+spam+collection)) and the k-Means Clustering notebook (where we use data from the videogame FIFA 22 that can be found [here](https://www.kaggle.com/datasets/stefanoleone992/fifa-22-complete-player-dataset)).  
 
-## Outline of the Notebook
+## Notebooks Overview
 
-The following is a detailed outline of the notebook and the steps we take to obtain the spam filter which classifies whether a given message is spam or not spam:
-
-1. We give a quick overview of how the multinomial naive Bayes algorithm works and what kind of information it uses;
-2. We divide the dataset of text messages into a training and test set;
-3. In order to make the algorithm run more smoothly, we clean the SMS in the training set;
-4. We find the vocabulary of words that appear in the SMS contained in the training set;
-5. We use these words to add columns to the training data and through these new columns we calculate the constants one needs to run the multinomial naive Bayes algorithm (we also set a Laplace smoothing parameter $\alpha = 1$ to avoid getting zero probabilities);
-6. We compute the remaining parameters and implement the spam filter by defining a function which takes as input a message and returns its classification label: either spam or not spam;
-7. We apply this function to the test set and observe an accuracy of 99.282%.
-
-## Next Steps
-
-Possible ideas to improve this project include:
-    
-- The accuracy score we obtained almost seems too good to be true. To make sure we are not running into overfitting issues, it might be a good idea to test our tool on a completely new setof pre-classified SMS and see if we still obtain an accuracy of at least 80% (the minimum benchmark we were initially aiming for); 
-- If this threshold is not met, we can try to improve the algorithm by changing the way we clean the messages. For example, we can make the classifier case sensitive by leaving both upper and lowercase words;
-- We can use the classifying function we defined to create a full fledge app which users can interact with by inputting the message that needs to be classified;
-- Taking the previous step even further, we can try to automate the classifying function so that it triggers every time a new text is received. My current weak skills as a developer won't probably allow me to achieve this result but I'm sure that, after some readings and consulting the right resources, I would eventually be able to pull it off.
+- `naive_bayes.ipynb`: we implement a Multinomial Naive Bayes Classifier from scratch to build a filter that determines whether a text messages is spam or not spam (I actually created this notebook a while ago as a separate project; hence, its structure is slightly different compared to the other ones).
+- `grad_boost_reg.ipynb`: we implemenet a Gradient Boosting Regressor from scratch. This is a tree based ensemble method which trains weak learners at different stages focusing each time on correcting the errors made during the previous stage.  
+- `grad_boost_clf.ipynb`: we implemenet a Gradient Boosting Classifier from scratch. Same as above but this time we solve a (multiclass) classification problem.
+- `knn_reg.ipynb`: we implement a k-Nearest Neighbors Regressor from scratch. This uses a distance based algorithm to find the training samples that are closest to the new observations. Predictions are then made by taking the average among these closest samples.
+- `knn_clf.ipynb`: we implement a k-Nearest Neighbors Classifier from scratch. Same as above but this time predictions are made using a majority vote among the nearest neighbors.
+- `kmeans_clust.ipynb`: we implement a k-Means Clustering algorithm from scratch. This is an unsupervised machine learning technique that allows to cluster data points based on their distance from the centroids.
